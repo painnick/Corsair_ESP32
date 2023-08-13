@@ -12,25 +12,13 @@
 
 #define PIN_RX 16 // dfplayer(FIXED)
 #define PIN_TX 17 // dfplayer(FIXED)
-#define PIN_MOTOR 23
-#define PIN_GATLING 15
-
-#define PWM_FREQUENCY 1000
-#define PWM_RESOLUTION 8
-#define CHANNEL_MOTOR 15
-
-
-bool isMotorOn = true;
+#define PIN_GATLING_LIGHT 15
 
 void setup() {
 #ifdef DEBUG
     ESP_LOGI(MAIN_TAG, "Setup...");
 #endif
-    pinMode(PIN_GATLING, OUTPUT);
-
-    ledcSetup(CHANNEL_MOTOR, PWM_FREQUENCY, PWM_RESOLUTION);
-    ledcAttachPin(PIN_MOTOR, CHANNEL_MOTOR);
-    ledcWrite(CHANNEL_MOTOR, 127);
+    pinMode(PIN_GATLING_LIGHT, OUTPUT);
 
     setupSound();
 }
@@ -39,9 +27,9 @@ void loop() {
     dfmp3.playMp3FolderTrack(2);
 
     for(int i = 0; i < 10; i ++) {
-        digitalWrite(PIN_GATLING, HIGH);
+        digitalWrite(PIN_GATLING_LIGHT, HIGH);
         delay(100);
-        digitalWrite(PIN_GATLING, LOW);
+        digitalWrite(PIN_GATLING_LIGHT, LOW);
         delay(100);
     }
 
