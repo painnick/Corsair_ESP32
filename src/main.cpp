@@ -13,6 +13,7 @@
 #define PIN_RX 16 // dfplayer(FIXED)
 #define PIN_TX 17 // dfplayer(FIXED)
 #define PIN_GATLING_LIGHT 15
+#define PIN_GATLING_BUTTON 36
 
 void setup() {
 #ifdef DEBUG
@@ -24,16 +25,20 @@ void setup() {
 }
 
 void loop() {
-    dfmp3.playMp3FolderTrack(2);
+    uint16_t val = analogRead(PIN_GATLING_BUTTON);
+    if (val < 255) {
+#ifdef DEBUG
+        ESP_LOGI(MAIN_TAG, "Click!");
+#endif
+        dfmp3.playMp3FolderTrack(2);
 
-    for(int i = 0; i < 10; i ++) {
-        digitalWrite(PIN_GATLING_LIGHT, HIGH);
-        delay(100);
-        digitalWrite(PIN_GATLING_LIGHT, LOW);
-        delay(100);
+        for(int i = 0; i < 5; i ++) {
+            digitalWrite(PIN_GATLING_LIGHT, HIGH);
+            delay(100);
+            digitalWrite(PIN_GATLING_LIGHT, LOW);
+            delay(100);
+        }
+
+        dfmp3.stop();
     }
-
-    dfmp3.stop();
-
-    delay(5000);
 }
