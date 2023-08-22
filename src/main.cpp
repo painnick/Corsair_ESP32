@@ -22,6 +22,11 @@ void setup() {
     pinMode(PIN_GATLING_LIGHT, OUTPUT);
 
     setupSound();
+
+    dfmp3.playMp3FolderTrack(1);
+    dfmp3.loop();
+    dfmp3.setRepeatPlayCurrentTrack(true);
+    dfmp3.loop();
 }
 
 void loop() {
@@ -30,15 +35,15 @@ void loop() {
 #ifdef DEBUG
         ESP_LOGI(MAIN_TAG, "Click!");
 #endif
-        dfmp3.playMp3FolderTrack(2);
+        dfmp3.playAdvertisement(1);
 
-        for(int i = 0; i < 5; i ++) {
+        for (int i = 0; i < 5; i++) {
             digitalWrite(PIN_GATLING_LIGHT, HIGH);
             delay(100);
             digitalWrite(PIN_GATLING_LIGHT, LOW);
             delay(100);
         }
 
-        dfmp3.stop();
+        dfmp3.stopAdvertisement();
     }
 }
