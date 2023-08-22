@@ -51,7 +51,7 @@ void loop() {
         static int count = 0;
         auto isExplosion = (++count) % 3 == 1;
 #else
-        auto isExplosion = random(0, 10) == 1;
+        auto isExplosion = random(0, 5) == 1;
 #endif
         if (isExplosion) {
 #ifdef DEBUG
