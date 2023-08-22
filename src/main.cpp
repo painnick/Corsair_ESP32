@@ -63,6 +63,7 @@ void loop() {
             delay(1400);
             dfmp3.stopAdvertisement();
             dfmp3.loop();
+            delay(5000);
         }
     }
 }
