@@ -114,7 +114,7 @@ void setupSound() {
     dfmp3.loop();
 
 #ifdef DEBUG
-    ESP_LOGI(MP3_TAG, "Set Volume 15");
+    ESP_LOGI(MP3_TAG, "Set Volume");
 
     ESP_LOGI(MP3_TAG, "Setup DFPlayer");
 #endif
