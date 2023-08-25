@@ -60,10 +60,10 @@ void loop() {
             delay(1000);
             dfmp3.playAdvertisement(2);
             dfmp3.loop();
-            delay(1400);
+            delay(1200);
             dfmp3.stopAdvertisement();
             dfmp3.loop();
-            delay(5000);
+            delay(1500);
         }
     }
 }
